@@ -39,6 +39,9 @@ Copyright 2019 Matt Martz
                 console.log(points, evt);
             };
             $scope.options = {
+                legend: {
+                    display: true
+                },
                 elements: {
                     line: {
                         fill: false
@@ -108,7 +111,7 @@ Copyright 2019 Matt Martz
                 for (file in $scope.baselines) {
                     baseline = $scope.baselines[file];
                     $scope.labels = [];
-                    $scope.series.push(baseline);
+                    $scope.series.push(file);
                     baseline.forEach(function(item) {
                         if (item.play.name != $scope.selected_play) {
                             return;
