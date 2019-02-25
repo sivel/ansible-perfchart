@@ -21,8 +21,8 @@ Copyright 2019 Matt Martz
     ngApp.controller('mainController', [
         '$scope',
         '$http',
-        '$sce',
-        function($scope, $http, $sce) {
+        '$filter',
+        function($scope, $http, $filter) {
             $scope.baseline_files = [];
             $scope.selected_baselines = [];
             $scope.baselines = {};
@@ -111,7 +111,7 @@ Copyright 2019 Matt Martz
                 for (file in $scope.baselines) {
                     baseline = $scope.baselines[file];
                     $scope.labels = [];
-                    $scope.series.push(file);
+                    $scope.series.push($filter('date')(file.split('.')[0], 'medium'));
                     baseline.forEach(function(item) {
                         if (item.play.name != $scope.selected_play) {
                             return;
