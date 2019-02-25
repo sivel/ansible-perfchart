@@ -1,0 +1,40 @@
+<html ng-app="ngApp" lang="en">
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-block-ui/0.2.2/angular-block-ui.min.css" />
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.7/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/angular.chartjs/latest/angular-chart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-block-ui/0.2.2/angular-block-ui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-controller="mainController">
+         <div class="container">
+            <div class="row">
+                <div>
+                    <select multiple class="form-control" ng-model="selected_baselines" ng-change="graph()">
+                        <option ng-repeat="file in baselines" value="{{file}}">{{file.split('.')[0]|date:'medium'}}</option>
+                    </select>
+                </div>
+                <!--<div>
+                    <pre>{{labels|json}}</pre>
+                    <pre>{{series|json}}</pre>
+                    <pre>{{data|json}}</pre>
+                </div>-->
+                <div class="col-lg-12 col-sm-12 ng-scope" id="line-chart">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Line Chart</div>
+                        <div class="panel-body">
+                            <canvas id="line" class="chart chart-line" chart-data="data"
+                                    chart-labels="labels" chart-series="series" chart-options="options"
+                                    chart-click="onClick"
+                                    height="522" width="1046" style="display: block; width: 523px; height: 261px;"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
