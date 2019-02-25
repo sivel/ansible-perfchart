@@ -33,7 +33,7 @@ kwargs.update({
     )
 })
 
-app = Flask(__name__)
+app = Flask(__name__, **kwargs)
 
 
 @app.route('/')
@@ -50,4 +50,4 @@ def get(item=None):
         return item
 
     items = os.listdir(os.path.join(app_path, '_baseline'))
-    return json.dumps(items)
+    return json.dumps([i for i in items if not i[0] == '.'])
